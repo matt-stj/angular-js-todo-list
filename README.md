@@ -9,7 +9,7 @@ We'll be using Turing's [Birdie API Endpoints](https://turing-birdie.herokuapp.c
 
 ## Next Steps Beyond the [MediaLoot Tutorial](http://medialoot.com/blog/angularjs-for-absolute-beginners/)
 
-Use a JavaScript constructor to build JS objects that will store note's properties.
+Use a JavaScript constructor to build JS objects that will store a note's properties.
 
 ```  
 function Note(id, description){
@@ -19,7 +19,7 @@ function Note(id, description){
   ```
   
   
-Fetch notes/todo items from the birdie app endpoints so we don't have to use hardcoded examples.
+Fetch notes/todo items from the birdie app endpoints so we don't have to use hardcoded examples.  Let's go ahead and replace the $scopes.todo array with the code below.
 ([Docs for Angular http functions](https://docs.angularjs.org/api/ng/service/$http))
 
 ```
@@ -32,7 +32,7 @@ $http.get(apiURL).success(function(response) {
   });
   ```
   
-Adding new notes to the todo list & posting to the birdie api.
+Post to the Birdie API endpoint when adding new notes.
 
 ```
   $scope.add = function(e) {
@@ -62,7 +62,9 @@ Adding new notes to the todo list & posting to the birdie api.
   };
 ```
 
-Notice: If the `$http.post` is successful, then we will also update the `$scope.todos` array to display that new note on the page without refreshing.  That's where this code comes into play:
+Notice: We want to make sure that we're only updating the template if the `$http.post` is successful. In the code, you'll see that If the API returns a successful request, then we will also update `$scope.todos` by pushing the newly created note into  the array.  When the new note enters the array, the page without update without refreshing.  
+
+(This is the code we're talking about):
 
 ```
 .then(function(response) {
@@ -71,8 +73,8 @@ Notice: If the `$http.post` is successful, then we will also update the `$scope.
   }
 ```
 
-If you've got that down, feel free to try deleting a note from the list.  You can always check your code with the example here.
+If you're feeling good about posting notes to the API, try updating the `$scope.done` function with `$http.delete()`.
 
-Feel free to try it locally in your browser:
+Feel free to try it locally in your browser or use the working example as a cheat sheet.
 - `git clone` this repo.
 - open the `index.html`.
