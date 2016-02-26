@@ -10,3 +10,68 @@ To use this app:
 - `git clone` this repo.
 - open the `index.html` file in your brower.
 
+
+## Next Steps Beyond the [MediaLoot Tutorial](http://medialoot.com/blog/angularjs-for-absolute-beginners/)
+
+Use a JavaScript constructor to build JS objects that will store properties.
+
+```  
+function Note(id, description){
+    this.id = id
+    this.description = description
+  } 
+  ```
+  
+  
+Fetch notes/todo items from the birdie app endpoints so we don't have to use hardcoded examples.
+([Docs for Angular http functions](https://docs.angularjs.org/api/ng/service/$http))
+
+```
+var apiURL = "https://turing-birdie.herokuapp.com/api/v1/posts.json";
+  
+$http.get(apiURL).success(function(response) {
+    $scope.todos = response.map(function(note) {
+      return new Note(note.id, note.description)
+    });;
+  });
+  ```
+  
+Adding new notes to the todo list & posting to the birdie api.
+
+```
+  $scope.add = function(e) {
+    if (e.which && e.which === 13) {
+      var description = $scope.newTodo
+
+      var postParams = {
+        post: {
+          description: description
+        }
+      }
+
+      $http.post(apiURL, postParams)
+      .then(function(response) {
+
+        var newNote = new Note(response.data.id, description)
+        $scope.todos.push(newNote);
+        console.log(response, $scope.newTodo)
+      },
+
+      function(error) {
+        console.log(error)
+      })
+
+      $scope.newTodo = '';
+    }
+  };
+```
+
+Notice: If the `$http.post` is successful, then we will also update the `$scope.todos` array to display that new note on the page without refreshing.  That's where this code comes into play:
+
+```
+.then(function(response) {
+   var newNote = new Note(response.data.id, description)
+   $scope.todos.push(newNote);
+  }
+```
+
