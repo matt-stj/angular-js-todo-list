@@ -1,6 +1,7 @@
 # angular-js-todo-list
 
-`master` branch has completed project that includes http/API integrations.
+`master` branch has completed project that includes http/API integrations.  
+
 `example-no-http` branch has working code up to the end of the tutorial.
 
 This is an example app that links an Angular.js ToDo list to a JSON API.  
