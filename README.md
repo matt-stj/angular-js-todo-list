@@ -6,10 +6,6 @@ The first portion of this app was coded from a tutorial [here](http://medialoot.
 
 We'll be using Turing's [Birdie API Endpoints](https://turing-birdie.herokuapp.com/) to access a remote database so our todo items will persist beyond Angular's temporary, client-side data storage.
 
-To use this app:
-- `git clone` this repo.
-- open the `index.html` file in your brower.
-
 
 ## Next Steps Beyond the [MediaLoot Tutorial](http://medialoot.com/blog/angularjs-for-absolute-beginners/)
 
@@ -75,3 +71,8 @@ Notice: If the `$http.post` is successful, then we will also update the `$scope.
   }
 ```
 
+If you've got that down, feel free to try deleting a note from the list.  You can always check your code with the example here.
+
+Feel free to try it locally in your browser:
+- `git clone` this repo.
+- open the `index.html`.
