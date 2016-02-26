@@ -1,5 +1,8 @@
 # angular-js-todo-list
 
+`master` branch has completed project that includes http/API integrations.
+`example-no-http` branch has working code up to the end of the tutorial.
+
 This is an example app that links an Angular.js ToDo list to a JSON API.  
 
 The first portion of this app was coded from a tutorial [here](http://medialoot.com/blog/angularjs-for-absolute-beginners/).  And then we took the tutorial one step further so users could post and delete items to a database.
