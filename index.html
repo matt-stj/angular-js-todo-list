@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <link href='https://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="style.css" />
-</head>
+  <head>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:100,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body ng-app="Todo">
-  <div class="page-container" ng-controller="TodoCtrl">
-    <h2>Todo</h2>
-
-    <ul class="todo-list" ng-repeat="todo in todos track by $index">
-      <li>
-        <span>{{ todo.description }}</span>
+  <body ng-app="Todo">
+    <div class="page-container" ng-controller="TodoCtrl">
+      <h2>Todo</h2>
+      <ul class="todo-list" ng-repeat="todo in todos track by $index">
+        <span>{{ todo }}</span>
         <button class="bt bt-achieve" ng-click="done(todo)">Done</button>
-      </li>
-    </ul>
+      </ul>
 
+      <ul class="add-todo">
+        <li>
+          <input type="text" class="txt" placeholder="New Todo"
+           ng-model="newTodo" ng-keyup="add($event)" />
+        </li>
+      </ul>
 
-    <ul class="add-todo">
-      <li>
-        <input type="text" class="txt" placeholder="New Todo" ng-model="newTodo" ng-keyup="add($event)" />
-      </li>
-    </ul>
+    </div>
 
-  </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.8/angular.js"></script>
-  <script src="script.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0-beta.8/angular.js"></script>
+    <script src="script.js"></script>
+  </body>
 
 </html>

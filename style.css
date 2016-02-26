@@ -5,8 +5,7 @@
   font-weight: 100;
 }
 
-html,
-body {
+html, body {
   height: 100%;
   width: 100%;
 }
@@ -72,8 +71,7 @@ body {
   padding: 10px;
 }
 
-.todo-list,
-.add-todo {
+.todo-list, .add-todo {
   list-style-type: none;
   text-align: left;
 }
