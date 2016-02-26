@@ -9,7 +9,7 @@ We'll be using Turing's [Birdie API Endpoints](https://turing-birdie.herokuapp.c
 
 ## Next Steps Beyond the [MediaLoot Tutorial](http://medialoot.com/blog/angularjs-for-absolute-beginners/)
 
-Use a JavaScript constructor to build JS objects that will store properties.
+Use a JavaScript constructor to build JS objects that will store note's properties.
 
 ```  
 function Note(id, description){
