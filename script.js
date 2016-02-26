@@ -2,16 +2,14 @@ var app = angular.module('Todo', []);
 
 app.controller('TodoCtrl', function($scope, $http) {
 
-  var get_url = "https://turing-birdie.herokuapp.com/api/v1/posts.json";
-  var post_url = "https://turing-birdie.herokuapp.com/api/v1/posts.json";
-  var delete_url = "https://turing-birdie.herokuapp.com/api/v1/posts/"
+  var apiURL = "https://turing-birdie.herokuapp.com/api/v1/posts.json";
 
   function Note(id, description){
     this.id = id
     this.description = description
   }
 
-  $http.get(get_url).success(function(response) {
+  $http.get(apiURL).success(function(response) {
     $scope.todos = response.map(function(note) {
       return new Note(note.id, note.description)
     });;
@@ -19,7 +17,8 @@ app.controller('TodoCtrl', function($scope, $http) {
   $scope.done = function(todo) {
 
 
-    var full_delete_url = delete_url + todo.id + ".json"
+    var deleteURL = "https://turing-birdie.herokuapp.com/api/v1/posts/";
+    var full_delete_url = deleteURL + todo.id + ".json"
     $http.delete(full_delete_url).then(function(response) {
               var indexOf = $scope.todos.indexOf(todo);
     if (indexOf !== -1) {
@@ -43,7 +42,7 @@ app.controller('TodoCtrl', function($scope, $http) {
         }
       }
 
-      $http.post(post_url, postParams)
+      $http.post(apiURL, postParams)
         .then(function(response) {
 
           var newNote = new Note(response.data.id, description)
