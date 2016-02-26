@@ -6,14 +6,14 @@ app.controller('TodoCtrl', function($scope, $http) {
   var post_url = "https://turing-birdie.herokuapp.com/api/v1/posts.json";
   var delete_url = "https://turing-birdie.herokuapp.com/api/v1/posts/"
 
-  function Note(description, id){
+  function Note(id, description){
+    this.id = id
     this.description = description
-    this.id = id || Math.max.apply(Math, $scope.todos.map(function(todo){return todo.id}))
   }
 
   $http.get(get_url).success(function(response) {
     $scope.todos = response.map(function(note) {
-      return new Note(note.description, note.id)
+      return new Note(note.id, note.description)
     });;
   });
   $scope.done = function(todo) {
@@ -43,15 +43,12 @@ app.controller('TodoCtrl', function($scope, $http) {
         }
       }
 
-// WE DONT KNOW WHAT THE ID IN THE DB IS GOING TO BE.
       $http.post(post_url, postParams)
         .then(function(response) {
 
-          var newNote = new Note(description)
-          debugger;
+          var newNote = new Note(response.data.id, description)
           $scope.todos.push(newNote);
             console.log(response, $scope.newTodo)
-
           },
 
           function(error) {
